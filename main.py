@@ -31,7 +31,10 @@ app = FastAPI(title="Supabase Connection Checker")
 # CORS (for VS Code Live Server)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://127.0.0.1:5500"],
+    allow_origins=[
+        "http://127.0.0.1:5500",
+        "https://endpoint-python.vercel.app"
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
