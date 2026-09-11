@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Management Dashboard</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div id="toast"></div>
+
+<div class="background"></div>
+
+<nav>
+    <h2>🎓 Student Management</h2>
+
+    <div class="status">
+        <span class="dot"></span>
+        Backend Connected
+    </div>
+</nav>
+
+<main class="container">
+
+<section class="stats">
+
+<div class="card">
+<h3>Total</h3>
+<p id="totalStudents">0</p>
+</div>
+
+<div class="card">
+<h3>Average</h3>
+<p id="avgMarks">0</p>
+</div>
+
+<div class="card">
+<h3>Highest</h3>
+<p id="highestMarks">0</p>
+</div>
+
+<div class="card">
+<h3>Lowest</h3>
+<p id="lowestMarks">0</p>
+</div>
+
+</section>
+
+<section class="form-card">
+
+<h2>Add / Update Student</h2>
+
+<form id="studentForm">
+
+<input type="hidden" id="studentId">
+
+<div class="field">
+<input id="name" placeholder="Student Name">
+<small id="nameError"></small>
+</div>
+
+<div class="field">
+<input id="course" placeholder="Course">
+<small id="courseError"></small>
+</div>
+
+<div class="field">
+<input id="marks" type="number" placeholder="Marks (0-100)">
+<small id="marksError"></small>
+</div>
+
+<div class="buttons">
+
+<button type="submit" id="submitBtn">
+Add Student
+</button>
+
+<button type="button" onclick="clearForm()">
+Clear
+</button>
+
+</div>
+
+</form>
+
+</section>
+
+<section class="table-card">
+
+<div class="table-header">
+
+<input
+id="searchInput"
+placeholder="Search student..."
+oninput="applyFilters()">
+
+<select id="courseFilter" onchange="applyFilters()">
+<option value="">All Courses</option>
+</select>
+
+<select id="sortMarks" onchange="applyFilters()">
+<option value="">Sort Marks</option>
+<option value="asc">Low → High</option>
+<option value="desc">High → Low</option>
+</select>
+
+</div>
+
+<div id="loading" class="loading hidden">
+Loading...
+</div>
+
+<table>
+
+<thead>
+<tr>
+<th>ID</th>
+<th>Name</th>
+<th>Course</th>
+<th>Marks</th>
+<th>Actions</th>
+</tr>
+</thead>
+
+<tbody id="studentTable"></tbody>
+
+</table>
+
+<div id="emptyState" class="hidden">
+No Students Found
+</div>
+
+</section>
+
+</main>
+
+<script src="script.js"></script>
+
+</body>
+</html>
